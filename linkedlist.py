@@ -69,17 +69,60 @@ class linkedlist():
             new_node.ref = n.ref
             n.ref = new_node
 
+    def delete_first(self):
+        if self.head is None:
+            print("linked list is empty so we can't perform any deletion...")
+        else:
+            self.head = self.head.ref
+    
+    def delete_end(self):
+        if self.head is None:
+             print("linked list is empty so we can't perform any deletion...")
+        elif self.head.ref is None:
+            self.head = None
+        else:
+            n = self.head
+            while n.ref.ref is not None:
+                n = n.ref
+            # print(n.data)
+            n.ref = None
+    def delete_value(self,data):
+        if self.head is None:
+            print("linked list is empty so we can't delete any element")
+            return
+        if data==self.head.data:
+            self.head = self.head.ref
+            return
+        n = self.head
+        while n.ref is not None:
+            if n.ref.data==data:
+                break
+            n = n.ref
+        if n.ref is None:
+            print("element to get delete is not present in linked list")
+            return
+        else:
+            n.ref = n.ref.ref
+            
+
+
+
 # linkedlistobj = linkedlist()
 l1 = linkedlist()
-# l1.add_begin(7)
-# l1.add_end(10)
-# l1.add_begin(4)
-# l1.add_end(11)
+l1.add_begin(7)
+l1.add_end(10)
+l1.add_begin(4)
+l1.add_end(11)
+l1.add_begin(7)
+l1.delete_value(7)
+# l1.add_end(18)
+# l1.delete_first()
+# l1.delete_end()
 # l1.add_begin(1)
-l1.add_begin(10)
-l1.add_end(20)
-l1.after_node(15,10)
-l1.before_node(12,15)
-l1.before_node(9,10)
-l1.before_node(9,100)
+# l1.add_begin(10)
+# l1.add_end(20)
+# l1.after_node(15,10)
+# l1.before_node(12,15)
+# l1.before_node(9,10)
+# l1.before_node(9,100)
 l1.printll()
