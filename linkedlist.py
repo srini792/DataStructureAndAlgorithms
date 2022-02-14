@@ -18,7 +18,13 @@ class linkedlist():
                 print(str(n.data)+"--->",end=" ")
                 n = n.ref
 
-
+    def insertemptylist(self,data):
+        if self.head is None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            print("list is not empty to insert ON insertemptylist")
+        
     def add_begin(self,data):
         new_node = Node(data)
         new_node.ref = self.head
@@ -109,11 +115,13 @@ class linkedlist():
 
 # linkedlistobj = linkedlist()
 l1 = linkedlist()
+
 l1.add_begin(7)
+l1.insertemptylist(1)
 l1.add_end(10)
 l1.add_begin(4)
 l1.add_end(11)
-l1.add_begin(7)
+l1.add_begin(8)
 l1.delete_value(7)
 # l1.add_end(18)
 # l1.delete_first()
