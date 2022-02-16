@@ -58,7 +58,7 @@ class DoublyLinkedList():
                 n = n.nref
             n.nref = new_node
             new_node.pref = n
-    '''
+    
     def insert_after(self,data,x):
         new_node = Node(data)
         if self.head is None:
@@ -79,10 +79,29 @@ class DoublyLinkedList():
             else:
                 new_node.pref = n
                 new_node.nref = n.nref
+                n.nref.pref = new_node
                 n.nref = new_node
-        '''
-
-    
+        
+    def insert_before(self,data,x):
+        new_node = Node(data)
+        if self.head is None:
+            print("The list is empty so we could not add any given element....!")
+        else:
+            n = self.head
+            while n is not None:
+                if n.data==x:
+                    break
+                n=n.nref
+            if n is None:
+                print("element is not present in linked list...!")
+            elif n.pref is None:
+                n.pref = new_node
+                new_node.nref = n
+            else:
+                new_node.nref = n
+                new_node.pref = n.pref
+                n.pref.nref = new_node
+                n.pref = new_node
     # def insert_before(self,data,x):
         # new_node = Node(data)
 
@@ -90,10 +109,9 @@ class DoublyLinkedList():
 
 dll = DoublyLinkedList()
 dll.insert_empty(10)
-dll.insert_begin(13)
-dll.insert_begin(11)
-dll.insert_begin(12)
-dll.insert_end(99)
+# dll.insert_end(99)
 dll.insert_after(99,10)
+dll.insert_after(100,99)
+dll.insert_before(101,100)
 dll.printlist()
 dll.printlistreverse()
