@@ -117,19 +117,37 @@ class DoublyLinkedList():
             self.head.pref = None
 
 
-    # def Delete_end(self):
-
+    def Delete_end(self):
+        if self.head is None:
+            print(f"doubly linked list is empty..! so deletion is not")
+            return
+        if self.head.nref is None:
+            self.head = None
+            print(f"doubly linked list is empty after deletion...!")
+            return
+        n = self.head
+        while n.nref is not None:
+            n = n.nref
+        n.pref.nref = None
+        
     # def Delete_by_value(self):
 
 
 dll = DoublyLinkedList()
 dll.insert_empty(10)
 dll.insert_begin(11)
-dll.insert_after(12,11)
+dll.insert_end(13)
+dll.insert_after(12,10)
+dll.insert_before(17,13)
+# dll.insert_after(15,14)
+dll.Delete_begin()
+dll.Delete_end()
+# dll.insert_begin(11)
+# dll.insert_after(12,11)
 # dll.insert_end(99)
 # dll.insert_after(99,10)
 # dll.insert_after(100,99)
 # dll.insert_before(101,100)
-dll.Delete_begin()
+# dll.Delete_begin()
 dll.printlist()
 dll.printlistreverse()
