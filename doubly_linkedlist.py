@@ -130,18 +130,48 @@ class DoublyLinkedList():
             n = n.nref
         n.pref.nref = None
         
-    # def Delete_by_value(self):
-
-
+    def Delete_by_value(self,x):
+        if self.head is None:
+            print(f"doubly linked list is empty..! so deletion is not")
+            return
+        if self.head.nref is None:
+            if self.head.data == x:
+                self.head = None
+            else:
+                print(f"element need to be delete is not present in linked list..!")
+            return
+        if self.head.data == x:
+            self.head = self.head.nref
+            self.head.pref = None
+            return
+        n = self.head
+        while n.nref is not None:
+            if n.data == x:
+                break
+            else:
+                n = n.nref
+        if n.nref is not None:
+           n.pref.nref = n.nref
+           n.nref.pref = n.pref
+        else:
+            if n.data == x:
+                n.pref.nref = None
+            else:
+                print(f"element need to be delete is not present in linked list..!") 
+        
 dll = DoublyLinkedList()
 dll.insert_empty(10)
-dll.insert_begin(11)
-dll.insert_end(13)
-dll.insert_after(12,10)
-dll.insert_before(17,13)
+dll.insert_before(11,10)
+dll.insert_after(12,11)
+dll.insert_begin(100)
+dll.Delete_by_value(10)
+# dll.insert_begin(11)
+# dll.insert_end(13)
+# dll.insert_after(12,10)
+# dll.insert_before(17,13)
 # dll.insert_after(15,14)
-dll.Delete_begin()
-dll.Delete_end()
+# dll.Delete_begin()
+# dll.Delete_end()
 # dll.insert_begin(11)
 # dll.insert_after(12,11)
 # dll.insert_end(99)
