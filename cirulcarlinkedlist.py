@@ -68,12 +68,25 @@ class circularlinkedlist():
             n.nref = self.head.nref
             self.head = self.head.nref
             return
-
-
+    
+    def delete_end(self):
+        if self.head is None:
+            print(f"There is no element in list, so deletion operation is not possible..!")
+            return
+        if self.head.nref is self.head:
+            self.head = None
+            return
+        else:
+            n = self.head
+            while n.nref.nref is not self.head: 
+                n = n.nref
+            n.nref = self.head
+            return
 cl = circularlinkedlist()
-# cl.insert_begin(10)
-# cl.insert_end(11)
-# cl.insert_middle(10.5,11)
-# cl.insert_middle(12,11)
+cl.insert_begin(10)
+cl.insert_end(11)
+cl.insert_middle(10.5,11)
+cl.insert_middle(12,11)
 cl.delete_begin()
+cl.delete_end()
 cl.print()
