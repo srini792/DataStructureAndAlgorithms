@@ -82,39 +82,35 @@ class circularlinkedlist():
                 n = n.nref
             n.nref = self.head
             return
-    '''   
+  
     def delete_by_value(self,x):
         if self.head is None:
             print(f"There is no element in list, so deletion operation is not possible..!")
             return
-        if self.head.nref == self.head:
+        if self.head.nref is self.head:
             if self.head.data == x:
                 self.head = None
                 return
             else:
                 print(f"There is no element in list, so deletion operation is not possible..!")
+                return
         else:
             n = self.head
             while n.nref.nref is not self.head:
-                if n.data == x:
+                if n.nref.data == x:
                     break
                 n = n.nref
-            print(n.data)
-            
-            # if n == self.head:
-            if n.data == x:
-                while n.nref is not self.head:
-                    n = n.nref
-                if n.nref is self.head:
-                    n.nref = self.head.nref
+
+            if n.nref.nref is self.head:
+                if self.head.data == x:
+                    self.head = self.head.nref
+                    n.nref.nref = self.head
                 else:
-                    n.nref = 
-                return
-            elif n.nref.data == x:
+                    print(f"There is no element in list, so deletion operation is not possible..!!!")
+            else:
                 n.nref = n.nref.nref
-                # print("here")
+                # print(f"There is no element in list, so deletion operation is not possible..!!!")
                 return
-    '''
 
                 
 cl = circularlinkedlist()
@@ -122,7 +118,7 @@ cl.insert_begin(10)
 cl.insert_end(11)
 cl.insert_middle(10.5,11)
 cl.insert_middle(12,11)
-# cl.delete_begin()
-# cl.delete_end()
-cl.delete_by_value(11)
+cl.delete_begin()
+cl.delete_end()
+cl.delete_by_value(10)
 cl.print()
