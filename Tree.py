@@ -4,3 +4,8 @@ class Tree:
         self.left = None
         self.right = None
 
+    def insert(self,insert_data):
+        if self.data 
+        if data < self.data:
+
+        elif data > self.data
