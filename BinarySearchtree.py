@@ -19,6 +19,8 @@ class BinarySearchTree():
                 self.rchild.insert(data)
             else:
                 self.rchild = BinarySearchTree(data)
+    def search(self,data):
+        
 
 root = BinarySearchTree(10)
 root.lchild = BinarySearchTree(9)
