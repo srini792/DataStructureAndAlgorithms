@@ -38,6 +38,12 @@ class BinarySearchTree():
             else:
                 print("Node Not Found...!")
 
+    def traversal(self): #pre-order, 
+        print(self.key,end=" ")
+        if self.lchild:
+            self.lchild.traversal()
+        if self.rchild:
+            self.rchild.traversal()
 
 root = BinarySearchTree(100)
 
@@ -54,3 +60,5 @@ for i in list1:
 # print(root.lchild.rchild)
 
 root.search(50)
+
+root.traversal()
