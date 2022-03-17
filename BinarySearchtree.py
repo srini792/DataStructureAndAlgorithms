@@ -45,6 +45,21 @@ class BinarySearchTree():
         if self.rchild:
             self.rchild.traversal()
 
+    def traversalInorder(self):
+        if self.lchild:
+            self.lchild.traversalInorder()
+        print(self.key,end=" ")
+        if self.rchild:
+            self.rchild.traversalInorder()
+
+    def traversalPostOrder(self):
+        if self.lchild:
+            self.lchild.traversalInorder()
+        if self.rchild:
+            self.rchild.traversalInorder()
+        print(self.key,end=" ")
+
+
 root = BinarySearchTree(100)
 
 list1 = [10,20,30,300,200,150]
@@ -62,3 +77,8 @@ for i in list1:
 root.search(50)
 
 root.traversal()
+print()
+root.traversalInorder()
+print()
+root.traversalPostOrder()
+print()
