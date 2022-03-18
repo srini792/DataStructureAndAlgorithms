@@ -58,7 +58,21 @@ class BinarySearchTree():
         if self.rchild:
             self.rchild.traversalInorder()
         print(self.key,end=" ")
-
+    
+    def DeleteNode(self,data):
+        if self.key is None:
+            print("Tree is empty..!")
+            return
+        if data < self.key:
+            if self.lchild:
+                self.lchild = self.lchild.DeleteNode(data)
+            else:
+                print("data is not present in a tree..!")
+        elif data > self.key:
+            if self.rchild:
+                self.rchild = self.rchild.DeleteNode(data)
+            else:
+                print("data is not present in a tree...!")
 
 root = BinarySearchTree(100)
 
