@@ -73,6 +73,9 @@ class BinarySearchTree():
                 self.rchild = self.rchild.DeleteNode(data)
             else:
                 print("data is not present in a tree...!")
+        else:
+            if self.lchild is None:
+                
 
 root = BinarySearchTree(100)
 
