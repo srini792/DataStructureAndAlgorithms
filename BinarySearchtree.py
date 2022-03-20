@@ -75,6 +75,13 @@ class BinarySearchTree():
                 print("data is not present in a tree...!")
         else:
             if self.lchild is None:
+                temp = self.rchild
+                self = None
+                return temp
+            if self.rchild is None:
+                temp = self.lchild
+                self = None
+                return temp
                 
 
 root = BinarySearchTree(100)
