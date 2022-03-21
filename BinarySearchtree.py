@@ -82,7 +82,13 @@ class BinarySearchTree():
                 temp = self.lchild
                 self = None
                 return temp
-                
+            node = self.rchild
+            while node.lchild:
+                node = node.lchild
+            self.key = node.key
+            self.rchild = self.rchild.delete(node.key)
+        return self
+
 
 root = BinarySearchTree(100)
 
@@ -104,5 +110,8 @@ root.traversal()
 print()
 root.traversalInorder()
 print()
-root.traversalPostOrder()
-print()
+# root.traversalPostOrder()
+# print()
+
+root.DeleteNode(150)
+root.traversalInorder()
