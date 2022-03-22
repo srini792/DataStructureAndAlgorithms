@@ -81,18 +81,26 @@ class BinarySearchTree():
             if self.rchild is None:
                 temp = self.lchild
                 self = None
+                print(temp.key)
                 return temp
             node = self.rchild
             while node.lchild:
                 node = node.lchild
             self.key = node.key
-            self.rchild = self.rchild.delete(node.key)
+            self.rchild = self.rchild.DeleteNode(node.key)
         return self
+
+
+def countNode(node):
+    if node is None:
+        return 0 
+    else:
+        return 1+countNode(node.lchild)+countNode(node.rchild)
 
 
 root = BinarySearchTree(100)
 
-list1 = [10,20,30,300,200,150]
+list1 = [50,60,10,5,15,55,65]
 
 for i in list1:
     root.insert(i)
@@ -104,7 +112,7 @@ for i in list1:
 # print(root.lchild.lchild)
 # print(root.lchild.rchild)
 
-root.search(50)
+# root.search(50)
 
 root.traversal()
 print()
@@ -112,6 +120,6 @@ root.traversalInorder()
 print()
 # root.traversalPostOrder()
 # print()
-
-root.DeleteNode(150)
+print(countNode(root))
+root.DeleteNode(50)
 root.traversalInorder()
