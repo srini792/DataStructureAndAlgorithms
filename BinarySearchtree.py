@@ -59,35 +59,46 @@ class BinarySearchTree():
             self.rchild.traversalInorder()
         print(self.key,end=" ")
     
-    def DeleteNode(self,data):
+    def DeleteNode(self,data,curr):
         if self.key is None:
             print("Tree is empty..!")
             return
         if data < self.key:
             if self.lchild:
-                self.lchild = self.lchild.DeleteNode(data)
+                self.lchild = self.lchild.DeleteNode(data,curr)
             else:
                 print("data is not present in a tree..!")
         elif data > self.key:
             if self.rchild:
-                self.rchild = self.rchild.DeleteNode(data)
+                self.rchild = self.rchild.DeleteNode(data,curr)
             else:
                 print("data is not present in a tree...!")
         else:
             if self.lchild is None:
                 temp = self.rchild
+                if data == curr:
+                    self.key = temp.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return
                 self = None
                 return temp
             if self.rchild is None:
                 temp = self.lchild
+                if data == curr:
+                    self.key = temp.key
+                    self.lchild = temp.lchild
+                    self.rchild = temp.rchild
+                    temp = None
+                    return
                 self = None
-                print(temp.key)
                 return temp
             node = self.rchild
             while node.lchild:
                 node = node.lchild
             self.key = node.key
-            self.rchild = self.rchild.DeleteNode(node.key)
+            self.rchild = self.rchild.DeleteNode(node.key,curr)
         return self
 
 
@@ -100,26 +111,19 @@ def countNode(node):
 
 root = BinarySearchTree(100)
 
-list1 = [50,60,10,5,15,55,65]
+list1 = [50,1,102]
 
 for i in list1:
     root.insert(i)
-# root.lchild = BinarySearchTree(9)
-# print(root.key)
-# print(root.lchild)
-# print(root.rchild)
-# print(root.lchild.key)
-# print(root.lchild.lchild)
-# print(root.lchild.rchild)
 
-# root.search(50)
 
 root.traversal()
 print()
 root.traversalInorder()
 print()
-# root.traversalPostOrder()
-# print()
-print(countNode(root))
-root.DeleteNode(50)
+
+if countNode(root) > 1:
+    root.DeleteNode(100,root.key)
+else:
+    print(f"Deletion can't perform in this tree..!!")
 root.traversalInorder()
