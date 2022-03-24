@@ -100,7 +100,16 @@ class BinarySearchTree():
             self.key = node.key
             self.rchild = self.rchild.DeleteNode(node.key,curr)
         return self
-
+    def minKey(self):
+        current = self
+        while current.lchild:
+            current = current.lchild
+        print(f"the min key is -->{current.key}")
+    def maxKey(self):
+        current = self
+        while current.rchild:
+            current = current.rchild
+        print(f"the max key is -->{current.key}")
 
 def countNode(node):
     if node is None:
@@ -111,19 +120,22 @@ def countNode(node):
 
 root = BinarySearchTree(100)
 
-list1 = [50,1,102]
+list1 = [50,1,102,1000,0]
 
 for i in list1:
     root.insert(i)
 
 
-root.traversal()
-print()
-root.traversalInorder()
-print()
+# root.traversal()
+# print()
+# root.traversalInorder()
+# print()
 
-if countNode(root) > 1:
-    root.DeleteNode(100,root.key)
-else:
-    print(f"Deletion can't perform in this tree..!!")
-root.traversalInorder()
+# if countNode(root) > 1:
+#     root.DeleteNode(100,root.key)
+# else:
+#     print(f"Deletion can't perform in this tree..!!")
+# root.traversalInorder()
+
+root.minKey()
+root.maxKey()
